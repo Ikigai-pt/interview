@@ -14,7 +14,7 @@ const isSpecialSubstring = (s1, s2) => {
   // loop s1 and s2 in parallel and set index for both
   // if iS1 > EOW return false
 
-  if(s1.length < s2.lenght ) return false;
+  if(s1.length < s2.length ) return false;
 
   let position = 0;
   let hitCounter = 0;
