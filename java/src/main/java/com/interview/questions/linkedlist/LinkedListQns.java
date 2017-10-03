@@ -43,5 +43,17 @@ public class LinkedListQns {
         System.out.println(" Insert at 8-----");
         linkedListService.printLL(
                 linkedListService.insertAtNth(root,88,8));
+
+        System.out.println(" Delete at Beginning ------");
+        linkedListService.printLL(
+              linkedListService.deleteAtNth(root, 1));
+
+        System.out.println(" Delete at 3 ------");
+        linkedListService.printLL(
+              linkedListService.deleteAtNth(root, 3));
+
+        System.out.println(" Delete at End ------");
+        linkedListService.printLL(
+              linkedListService.deleteAtNth(root, 7));
     }
 }

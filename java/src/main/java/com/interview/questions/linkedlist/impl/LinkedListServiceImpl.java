@@ -50,4 +50,20 @@ public class LinkedListServiceImpl implements LinkedListService {
             node = node.next;
         }
     }
+
+    @Override public Node deleteAtNth(Node head, int position) {
+      int counter = 1;
+      if (head == null) return head;
+      if (position == 1) return head.next;
+      Node node = head;
+      while(node.next != null) {
+        counter++;
+        if(counter == position){
+            node.next = node.next.next;
+            break;
+        }
+        node = node.next;
+      }
+        return head;
+    }
 }
