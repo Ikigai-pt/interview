@@ -9,5 +9,5 @@ public interface LinkedListService {
     Node insertAtTail(Node head, int data);
     Node insertAtNth(Node head, int data, int position);
     void printLL(Node head);
-
+    Node deleteAtNth(Node head, int position);
 }
