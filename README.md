@@ -14,3 +14,6 @@ Materials
 * https://gist.github.com/TSiege/cbb0507082bb18ff7e4b
 * https://www.palantir.com/2011/09/how-to-ace-an-algorithms-interview/
 * http://www.byte-by-byte.com/studying-data-structures-and-algorithms/
+* https://techiedelight.quora.com/500-Data-Structures-and-Algorithms-practice-problems-and-their-solutions?share=1
+* https://www.beehyve.io/data-structures/community/discussions/feed/0/10
+
