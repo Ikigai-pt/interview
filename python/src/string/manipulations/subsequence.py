@@ -10,7 +10,6 @@ def sub_sequence(inp_string, sub_str):
                 return True
             i += 1
     return False
-
 print sub_sequence("abdcefg", "dfa")
 print sub_sequence("abdcefg", "ace")
 print sub_sequence("abdcefg", "dce")
