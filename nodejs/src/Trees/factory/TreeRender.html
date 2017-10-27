@@ -1,7 +1,7 @@
 <!-- WIP build an api to render trees for testing purpose  -->
 <!DOCTYPE html>
 <html>
-  <!-- <meta http-equiv="refresh" content="2" /> -->
+  <meta http-equiv="refresh" content="2" />
   <head>
     <meta charset="utf-8"/>
     <title>Canvas tutorial</title>
@@ -58,7 +58,7 @@
       function test() {
         canvas = document.getElementById('tutorial');
         ctx = canvas.getContext('2d');
-        var height = 5;
+        var height = Math.floor(Math.random() * 5);
         var sampleTree = generateSampleBinaryTree(height);
         renderBTreeNode(sampleTree, 500, 30, true, 0, height);
       }
