@@ -35,5 +35,3 @@ def pairWithSumUnsorted(A,sum):
     return False
 
 print(pairWithSumUnsorted(B,10))
-
-
