@@ -29,3 +29,35 @@ def subStringSet(input, index):
 solution = subStringSet(ex2,0)
 
 print("size %d result %s" %(len(solution), solution))
+
+# --------------------------------------------------------------
+# Prakash : Good job!
+# I think you can still optimize it further. You are constantly checking to make sure there are no 
+# duplicates. Every time you add an element you need to iterate through all the existing elements to 
+# ensure they dont already exist. 
+# Here is a much simpler solution - the trick is to not add "a" , "b", "c" right away rather start with an
+# empty string "" and append to it 
+# First iteration
+#   "" + a  => ["", a]
+# Second iteration
+#   "" +  b, a + b  => ["",a, b, ab]
+# Third iteration
+#   "" + c, a+c, b+c, ab+c = > ["", a, b, ab, c, ac, bc, abc]
+
+
+
+def combination(inputStr):
+    resultSet = [""]
+    for ch in inputStr:
+        localSet = []
+        for val in resultSet:
+            localSet.append(val + ch)
+        resultSet.extend(localSet)
+    return resultSet[1:]
+
+
+# Testing - data 
+input = "abc"
+result =  combination(input)
+print 'Result for ', input, 'is :', result
+print 'Total elements in set :', len(result)
