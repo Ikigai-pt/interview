@@ -1,0 +1,28 @@
+<!-- WIP build an api to render trees for testing purpose  -->
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="refresh" content="2" />
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+      function draw() {
+        var canvas = document.getElementById('tutorial');
+        if (canvas.getContext) {
+          var ctx = canvas.getContext('2d');
+          ctx.beginPath();
+          ctx.arc(75, 75, 15, 0, Math.PI * 2, true)
+          ctx.stroke();
+          ctx.font="10px Arial";
+          ctx.fillText("135",70,78);
+        }
+      }
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="tutorial" width="600" height="600"></canvas>
+  </body>
+</html>
