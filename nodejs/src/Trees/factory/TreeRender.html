@@ -1,0 +1,74 @@
+<!-- WIP build an api to render trees for testing purpose  -->
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="refresh" content="2" />
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canvas tutorial</title>
+    <script type="text/javascript" src="nodes.js"></script>    
+    <script type="text/javascript">
+      var canvas;
+      var ctx;
+
+      function drawCircle(x, y, text) {
+        ctx.moveTo(x, y);
+        ctx.beginPath();
+        ctx.arc(x, y, 15, 0, Math.PI * 2, true);
+        ctx.font="15px Arial";
+        ctx.moveTo(x-10,y+5);
+        ctx.fillText(text,x-10,y+5);   
+        ctx.stroke();  
+      }
+      function drawLine(x, y, x2, y2) {
+        if (x === x2 && y=== y2) {
+            return;
+        }
+        ctx.beginPath();
+        ctx.moveTo(x,y+15);
+        ctx.lineTo(x2,y2-15);
+        ctx.stroke();
+      }
+      
+      function renderBTreeNode(btree, parentX, parentY, isLeft, curlevel, maxlevel) {
+        // TODO Check for canvas boundries
+        var x, y;
+        if (!btree) {
+            return;
+        }
+        if (curlevel === 0 ) {
+            x = parentX;
+            y = parentY;
+        }else {
+            if (isLeft) {
+                x = parentX - (Math.pow(2,maxlevel-curlevel+1) * 15)/2
+                y = parentY +45;
+            } else {
+                x = parentX + (Math.pow(2,maxlevel-curlevel+1) * 15)/2
+                y = parentY +45;
+            }
+        }
+        console.log("x - "+x +" y - "+y + " val - "+btree.value+" level-"+curlevel);
+        drawLine(parentX,parentY,x,y)
+        drawCircle(x,y, btree.value);
+
+        renderBTreeNode(btree.left, x, y, true, curlevel+1, maxlevel);
+        renderBTreeNode(btree.right, x, y, false, curlevel+1, maxlevel);
+      }
+
+      function test() {
+        canvas = document.getElementById('tutorial');
+        ctx = canvas.getContext('2d');
+        var height = Math.floor(Math.random() * 5);
+        var sampleTree = generateSampleBinaryTree(height);
+        renderBTreeNode(sampleTree, 500, 30, true, 0, height);
+      }
+
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="test();">
+    <canvas id="tutorial" width="1000" height="600"></canvas>
+  </body>
+</html>
