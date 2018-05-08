@@ -9,6 +9,19 @@
 #   true
 # false
 
+# BasicLogic find sub array with 0 sum
+def subArrayWithSumZeroBasic(A):
+    sum = 0;
+    for outerIndex in range(len(A)):
+        sum = A[outerIndex];
+        if ( sum == 0 ): return True
+        print(" init sum {0}".format(sum))
+        for index in range(outerIndex+1, len(A)):
+            sum += A[index]
+            print(sum);
+            if ( sum == 0 ): return True
+
+# Optimized Using HashTable logic
 def subArrayWithSumZero(A):
     sumAtIndex = [];
     localsum = 0;
@@ -24,11 +37,13 @@ A=[4, 2, -3, 1, 6]
 B=[4, 2, 0, 1, 6]
 C=[1, 4, -2, -2, 5, -4, 3]
 X=[-3, 2, 3, 1, 6]
+print(A)
+print(subArrayWithSumZeroBasic(A))
 
-print(subArrayWithSumZero(A))
-print(subArrayWithSumZero(B))
-print(subArrayWithSumZero(C))
-print(subArrayWithSumZero(X))
+# print(subArrayWithSumZero(A))
+# print(subArrayWithSumZero(B))
+# print(subArrayWithSumZero(C))
+# print(subArrayWithSumZero(X))
 
 #  Variation
 #  Maximum Size Subarray Sum Equals k

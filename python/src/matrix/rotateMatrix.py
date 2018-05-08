@@ -28,12 +28,54 @@ def rotateMatrix90degree(M):
             for r in range(0,rowLen):
                 if(r%2 == 0):
                     O[r][y]= M[rowLen-d-1][r]
-                else
+                else:
                     O[rowLen-d-1][y]= M[rowLen-d-1:][rowLen-d-1]
             prettyPrint(O)
     return O
 
+def rotateMatrix(M):
+    #let the matrix be arranged in x & y coordinates
+    rowLen = len(M)
+    colLen = len(M[0])
+    firstVal = M[0][0]
+    print("Col len %d Row Len %d", colLen,rowLen )
+    for y in range(0,1):
+        colLen -=1
+        for x in range(1,5):
+            print(x)
+            if(x % 2 > 0):
+                rowLen -=1
+                print(M[rowLen -x +1][x-1])
+                print(M[colLen -rowLen +x -1 ][colLen -rowLen -x])
+                M[colLen - rowLen][colLen - rowLen] = M[rowLen -x +1][x-1]
+            else:
+                print(M[rowLen][rowLen])
+                M[rowLen][x-2] = M[rowLen][rowLen]
+            prettyPrint(M)
+        M[0][rowLen] = firstVal
+    return M
+
+def rotateAnyMatrix(M):
+    # base case M[1,1]
+    if(len(M) == len(M[0]) == 1):
+        return M
+    rows = len(M)
+    columns = len(M[0])
+
+    for r in range(1,rows):
+        for c in range(0,columns):
+            fromR = rows - r
+            fromC = c
+            toR = r
+            toC =  c
+            print("from position %d ,%d" %(fromR, fromC))
+            print("to position %d, %d"%(toR,toC))
+
+
+
+
 data = 0;
 M = [[ randint(1,100) for r in range(4)] for c in range(4)]
 prettyPrint(M)
-prettyPrint(rotateMatrix90degree(M))
+rotateAnyMatrix(M)
+#prettyPrint(rotateMatrix(M))
