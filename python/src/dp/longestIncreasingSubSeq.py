@@ -28,14 +28,48 @@
 # OPT(i) = max(OPT(i) + OPT(i+1))
 # save the maxLenSubSeq + all indices
 
-def longestIncSubSeq(n, mlen, input):
-    maxLenSubSeq = mlen
-    if(n >= 0 && input[n] < input[memo[n+1]]):
-        memo[n] = n
-        mlen+=1
-        maxLenSubSeq = max( longestIncSubSeq(n-1,mlen, input), mlen)
-    return maxLenSubSeq
 
-input = [ 3, 10, 2, 1, 20 ]
-memo = [0] * (5+1)
-print(longestIncSubSeq(4,1,input))
+# LIS given an array of numbers find the largest non-continuous sequence of
+# increasing numbers.
+# Idea: if n = 1 then return 1
+# n = 2 then store the index of last maxSeq
+
+input = []
+def longestIncSubSeq(lastMaxLength, lastMaxNumber, index):
+    if ( index < len(input)):
+        if ( input[index] >= lastMaxNumber ):
+            return max(longestIncSubSeq(lastMaxLength + 1, input[index], index+1), longestIncSubSeq(lastMaxLength+1,
+                input[index], index+2))
+        else :
+            return max(longestIncSubSeq(lastMaxLength, lastMaxNumber, index+1), longestIncSubSeq(lastMaxLength,
+                lastMaxNumber, index+2))
+    else :
+        return lastMaxLength
+
+def wrapper(data):
+    global input
+    input = data
+    print(input)
+    print(longestIncSubSeq(0, 0, 0))
+
+eg1 = [ 10, 22, 9, 33, 21, 50, 41, 60, 80]
+eg2 = [ 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+eg3 = [ 0, 22, 9, 33, 21, 50, 41, 60]
+
+wrapper(eg3)
+wrapper(eg2)
+wrapper(eg3)
+
+## solved using Dynamic programming 
+memo = []
+def longestIncSubSeqV2(input):
+    memo = [1] * len(input)
+
+    for i in range ( 1, len(input)):
+        for j in range( 0, i ):
+            if ( input[i] > input[j] and memo[i] < memo[j] +1 ):
+                memo[i] = memo[j] +1
+    return max(memo)
+print(eg1)
+print(longestIncSubSeqV2(eg1))
+
